@@ -1,0 +1,12 @@
+GameClient1/.vs/
+GameClient1/Assembly-CSharp.csproj
+GameServer1/Library/
+GameServer1/Logs/Packages-Update.log
+GameServer1/obj/
+GameServer1/.vs/
+GameClientBuild/
+*.vcxproj
+*.sln
+*.csproj
+GameClient1/Library/
+*.log
