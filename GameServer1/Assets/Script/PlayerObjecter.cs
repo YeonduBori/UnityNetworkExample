@@ -6,18 +6,20 @@ public class PlayerObjecter : MonoBehaviour
 {
     public bool IsEnding = false;
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.CompareTag("EndingPoint"))
-        {
-            IsEnding = true;
-        }
-    }
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("EndingPoint"))
         {
             IsEnding = true;
+            Debug.Log($"IsEnding? : {IsEnding}");
+        }
+    }
+    private void OnTriggerStay(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("EndingPoint"))
+        {
+            IsEnding = true;
+            Debug.Log($"IsEnding? : {IsEnding}");
         }
     }
 }

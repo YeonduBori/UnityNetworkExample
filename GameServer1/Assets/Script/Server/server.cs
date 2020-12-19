@@ -200,7 +200,7 @@ public class server : MonoBehaviour
                 x = reader.ReadSingle();
                 y = reader.ReadSingle();
                 z = reader.ReadSingle();
-                Debug.Log("id:" + id + " x:" + x + "y:" + y + "z: " + z);
+                //Debug.Log("id:" + id + " x:" + x + "y:" + y + "z: " + z);
                 clientObjects[id].GetComponent<Transform>().Translate(x, y, z);
                 x = clientObjects[id].GetComponent<Transform>().position.x;
                 y = clientObjects[id].GetComponent<Transform>().position.y;
