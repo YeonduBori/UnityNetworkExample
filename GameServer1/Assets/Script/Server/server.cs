@@ -85,7 +85,7 @@ public class server : MonoBehaviour
 
         for(int index = 0; index < clientObjects.Count; index++)
         {
-            if(clientObjects[index].GetComponent<PlayerObjecter>().IsEnding && !isGameEnd)
+            if(clientObjects[index].GetComponentInChildren<PlayerObjecter>().IsEnding && !isGameEnd)
             {
                 isGameEnd = true;
                 byte[] data = Message.getBytes(MessageID.NOTICE, index, $"Client{index} Win!");
