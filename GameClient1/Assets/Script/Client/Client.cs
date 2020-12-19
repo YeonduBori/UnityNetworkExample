@@ -18,6 +18,7 @@ public class Client : MonoBehaviour
     [Header("UI"), Space(3)]
     public InputField HostInputField;
     public InputField PortInputField;
+    public Text TxtServerNotice;
     public GameObject LoginObject;
 
     private int clientID;
@@ -80,6 +81,8 @@ public class Client : MonoBehaviour
                 OnIncomingData();
             }
         }
+
+        TxtServerNotice.text = serverMessage;
     }
     #endregion
 

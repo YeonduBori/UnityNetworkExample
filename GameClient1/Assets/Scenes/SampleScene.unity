@@ -1459,6 +1459,7 @@ MonoBehaviour:
   prefab: {fileID: 4190948650559309645, guid: c1d47cbc3b31b18419673986f897acee, type: 3}
   HostInputField: {fileID: 1918537035}
   PortInputField: {fileID: 1332028501}
+  TxtServerNotice: {fileID: 2047211693}
   LoginObject: {fileID: 468057043}
   clientObjects: []
   player: {fileID: 0}
