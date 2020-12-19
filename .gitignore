@@ -11,3 +11,7 @@ GameClientBuild/
 GameClient1/Library/
 *.log
 GameClient1/obj/
+GameClient1/Temp/
+GameClient1/UpgradeLog.htm
+GameClient1/Packages/packages-lock.json
+GameServer1/Packages/packages-lock.json

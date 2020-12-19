@@ -44,6 +44,9 @@ public class Client : MonoBehaviour
     {
         clientID = -1;
         clientObjects = new List<GameObject>();
+        HostInputField.text = "10.21.20.36";
+        PortInputField.text = "6321";
+        ConnectedToServer();
     }
 
     private void Update()
