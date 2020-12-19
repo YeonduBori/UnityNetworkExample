@@ -22,12 +22,10 @@ public class Client : MonoBehaviour
 
     private int clientID;
 
-    private float speed = 1;
+    private float speed = 2.5f;
 
     [SerializeField]
     private List<GameObject> clientObjects;
-    [SerializeField]
-    private List<Transform> clientTransforms;
     [SerializeField]
     private Player player;
 
@@ -146,14 +144,14 @@ public class Client : MonoBehaviour
         switch(messageID)
         {
             case (int)MessageID.INIT:
-                Debug.Log("Init Client");
+                //Debug.Log("Init Client");
                 id = bReader.ReadInt32();
                 clientID = id;
                 x = bReader.ReadSingle();
                 y = bReader.ReadSingle();
                 z = bReader.ReadSingle();
                 buffer = Message.getBytes(MessageID.NEW, id, id*2, 0, 0);
-                Debug.Log($"ID: {id}, X: {x}, Y:{y} z:{z}");
+                //Debug.Log($"ID: {id}, X: {x}, Y:{y} z:{z}");
                 Send(buffer);
                 break;
             
@@ -163,20 +161,18 @@ public class Client : MonoBehaviour
                 x = bReader.ReadSingle();
                 y = bReader.ReadSingle();
                 z = bReader.ReadSingle();
-                Debug.Log($"ID: {id}, X: {x}, Y:{y} z:{z}");
+                //Debug.Log($"ID: {id}, X: {x}, Y:{y} z:{z}");
 
                 if (id == clientID)
                 {
                     GameObject clientObject = Instantiate(myPrefab, new Vector3(x, y, z), Quaternion.identity);
                     clientObjects.Add(clientObject);
-                    clientTransforms.Add(clientObject.GetComponent<Transform>());
-                    player = clientObject.GetComponent<Player>();
+                    player = clientObject.GetComponentInChildren<Player>();
                 }
                 else
                 {
                     GameObject clientObject = Instantiate(prefab, new Vector3(x, y, z), Quaternion.identity);
                     clientObjects.Add(clientObject);
-                    clientTransforms.Add(clientObject.GetComponent<Transform>());
                 }
                 break;
             
@@ -188,8 +184,8 @@ public class Client : MonoBehaviour
                 y = bReader.ReadSingle();
                 z = bReader.ReadSingle();
 
-                Debug.Log($"ID: {id}, X: {x}, Y:{y} z:{z}");
-                clientTransforms[id].position = new Vector3(x, y, z);
+                //Debug.Log($"ID: {id}, X: {x}, Y:{y} z:{z}");
+                clientObjects[id].transform.position = new Vector3(x, y, z);
                 break;
             case (int)MessageID.NOTICE:
                 Debug.Log("Server Notice");

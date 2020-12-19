@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9170597666635139309}
-  - component: {fileID: 7053995034852047165}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -33,19 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7053995034852047165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2578634629831745384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c3f5189954b34a40b3355c8b852666e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 5368695127160444578}
 --- !u!54 &1211381710
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -75,6 +61,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.639792, z: 0.7781468}
   m_Center: {x: 0, y: 0.8060677, z: 0.05124232}
+--- !u!114 &477058940945334715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5368695127153157392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c3f5189954b34a40b3355c8b852666e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  rigidbody: {fileID: 0}
+  IsGround: 0
+  JumpPower: 1300
 --- !u!1001 &5368695127153058754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -148,12 +150,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5368695127153058754}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &5368695127160444578 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 9500000, guid: ba24e610e0a338545b447ff44a3cf1cc,
-    type: 3}
-  m_PrefabInstance: {fileID: 5368695127153058754}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6993223908346520104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -194,7 +190,7 @@ PrefabInstance:
     - target: {fileID: 6536791901014102653, guid: ed829e109f5755d44921d6271211f8d8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.3568186
+      value: 0.47575808
       objectReference: {fileID: 0}
     - target: {fileID: 6536791901014102653, guid: ed829e109f5755d44921d6271211f8d8,
         type: 3}
