@@ -1,15 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-
 using UnityEngine;
-public enum MessageID
-{
-    INIT=10,
-    NEW,
-    MOVE,
-    NOTICE
-}
 
 public class Message
 {

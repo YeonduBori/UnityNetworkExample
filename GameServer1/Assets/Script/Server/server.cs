@@ -8,8 +8,6 @@ using System.IO;
 using UnityEngine.UI;
 using System.Threading;
 
-
-
 public class server : MonoBehaviour
 {
     
@@ -25,7 +23,7 @@ public class server : MonoBehaviour
     
     private TcpListener Server;
     private bool serverStarted;
-
+    private bool isGameEnd = false;
   
     private void Start()
     {
@@ -52,11 +50,13 @@ public class server : MonoBehaviour
     {
         if (!serverStarted)
             return;
+
         if (newOneCame)
         {
             SendDataToAllClient();
             newOneCame = false;
         }
+
         foreach (ServerClient c in clients)
         {
             // Is the client still connected?
@@ -78,9 +78,21 @@ public class server : MonoBehaviour
                     {
                         OnIncomingData(c, reader);
                     }
+
                 }
             }
         }
+
+        for(int index = 0; index < clientObjects.Count; index++)
+        {
+            if(clientObjects[index].GetComponent<PlayerObjecter>().IsEnding && !isGameEnd)
+            {
+                isGameEnd = true;
+                byte[] data = Message.getBytes(MessageID.NOTICE, index, $"Client{index} Win!");
+                Broadcast(data, clients);
+            }
+        }
+
         for(int i = 0; i < disconnectList.Count-1; i++)
         {
             //Broadcast(disconnectList[i].clientName + " has disconnected", clients);
@@ -156,6 +168,7 @@ public class server : MonoBehaviour
         Debug.Log("end of loop in AcceptTcpClient");
 
     }
+
     private void OnIncomingData(ServerClient c, BinaryReader reader)
     {
         int messageID;

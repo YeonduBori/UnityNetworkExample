@@ -36,6 +36,7 @@ public class Client : MonoBehaviour
     private BinaryWriter bWriter;
     private BinaryReader bReader;
 
+    private string serverMessage;
 
     #region Unity Function
     private void Start()
@@ -189,11 +190,20 @@ public class Client : MonoBehaviour
                 break;
             case (int)MessageID.NOTICE:
                 Debug.Log("Server Notice");
+                id = bReader.ReadInt32();
+                if(id == clientID)
+                {
+                    serverMessage = "You Win!";
+                }
+                else
+                {
+                    serverMessage = bReader.ReadString();
+                }
+                
                 break;
             default:
                 Debug.Log($"MessageID({messageID}) in switch. Error");
                 break;
-            
         }
         
     
