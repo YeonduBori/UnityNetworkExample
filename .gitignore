@@ -10,3 +10,4 @@ GameClientBuild/
 *.csproj
 GameClient1/Library/
 *.log
+GameClient1/obj/

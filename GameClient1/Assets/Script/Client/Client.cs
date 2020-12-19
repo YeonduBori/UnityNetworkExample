@@ -24,8 +24,12 @@ public class Client : MonoBehaviour
 
     private float speed = 1;
 
+    [SerializeField]
     private List<GameObject> clientObjects;
+    [SerializeField]
     private List<Transform> clientTransforms;
+    [SerializeField]
+    private Player player;
 
     private bool socketReady;
     private TcpClient socket;
@@ -60,6 +64,13 @@ public class Client : MonoBehaviour
                 bWriter.Write(moveAmount.x);
                 bWriter.Write(moveAmount.y);
                 bWriter.Write(moveAmount.z);
+                if (player != null)
+                    player.animator.SetBool("IsMove", true);
+            }
+            else if(clientID >= 0)
+            {
+                if (player != null)
+                    player.animator.SetBool("IsMove", false);
             }
 
             if (stream.DataAvailable)
@@ -84,11 +95,11 @@ public class Client : MonoBehaviour
         string hostIP;
         int portNumber;
 
-        hostIP = GameObject.Find("HostInputField").GetComponent<InputField>().text;
+        hostIP = HostInputField.text;
         if (hostIP != "")
             host = hostIP;
 
-        int.TryParse(GameObject.Find("PortInputField").GetComponent<InputField>().text, out portNumber);
+        int.TryParse(PortInputField.text, out portNumber);
         if (portNumber != 0)
             port = portNumber;
 
@@ -156,6 +167,7 @@ public class Client : MonoBehaviour
                     GameObject clientObject = Instantiate(myPrefab, new Vector3(x, y, z), Quaternion.identity);
                     clientObjects.Add(clientObject);
                     clientTransforms.Add(clientObject.GetComponent<Transform>());
+                    player = clientObject.GetComponent<Player>();
                 }
                 else
                 {
