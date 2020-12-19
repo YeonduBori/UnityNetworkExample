@@ -848,7 +848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6775e3e8db4b6be4a95ccdcc29a6e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clientPrefab: {fileID: 1838500165500701626, guid: f5a063b95865c48458c3b28c0834c50f,
+  clientPrefab: {fileID: 2578634629831745384, guid: cdd3ea224cd26f040872ccf2eb3e5a45,
     type: 3}
   port: 6321
 --- !u!224 &1999605317
